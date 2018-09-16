@@ -1,0 +1,18 @@
+version: "2"
+services:
+  backend:
+    container_name: backend
+    restart: always
+    build: .
+    ports:
+    - "4000:4000"
+    depends_on:
+    - mongo
+    volumes:
+    - .:/usr/src/app
+  mongo:
+    image: mongo
+    ports:
+    - "27017:27017"
+    volumes:
+    - ./data:/data/db
